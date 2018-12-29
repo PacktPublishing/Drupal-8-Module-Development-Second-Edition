@@ -55,4 +55,28 @@ class ImporterManager extends DefaultPluginManager {
     return $this->createInstance($config->getPluginId(), ['config' => $config]);
   }
 
+  /**
+   * Creates an array of importer plugins from all the existing Importer
+   * configuration entities.
+   *
+   * @return \Drupal\products\Plugin\ImporterInterface[]
+   */
+  public function createInstanceFromAllConfigs() {
+    $configs = $this->entityTypeManager->getStorage('importer')->loadMultiple();
+    if (!$configs) {
+      return [];
+    }
+    $plugins = [];
+    foreach ($configs as $config) {
+      $plugin = $this->createInstanceFromConfig($config->id());
+      if (!$plugin) {
+        continue;
+      }
+
+      $plugins[] = $plugin;
+    }
+
+    return $plugins;
+  }
+
 }
