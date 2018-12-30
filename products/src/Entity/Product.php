@@ -17,7 +17,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\products\ProductListBuilder",
- *
+ *     "access" = "Drupal\products\Access\ProductAccessControlHandler",
  *     "form" = {
  *       "default" = "Drupal\products\Form\ProductForm",
  *       "add" = "Drupal\products\Form\ProductForm",

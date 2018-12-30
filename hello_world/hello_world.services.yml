@@ -19,3 +19,12 @@ services:
     class: \Drupal\hello_world\HelloWorldConfigOverrides
     tags:
       - {name: config.factory.override, priority: 5}
+  hello_world.access_checker:
+    class: \Drupal\hello_world\Access\HelloWorldAccess
+    arguments: ['@config.factory']
+    tags:
+      - { name: access_check, applies_to: _hello_world_access_check }
+  hello_world.route_subscriber:
+    class: Drupal\hello_world\Routing\HelloWorldRouteSubscriber
+    tags:
+      - { name: event_subscriber }

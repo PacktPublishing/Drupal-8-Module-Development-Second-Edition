@@ -12,4 +12,4 @@ hello_world.greeting_form:
     _form: '\Drupal\hello_world\Form\SalutationConfigurationForm'
     _title: 'Salutation configuration'
   requirements:
-    _permission: 'administer site configuration'
+    _hello_world_access_check: 'TRUE'
