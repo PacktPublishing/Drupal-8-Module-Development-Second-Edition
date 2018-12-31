@@ -11,11 +11,11 @@ use Drupal\Core\Url;
 interface ImporterInterface extends ConfigEntityInterface {
 
   /**
-   * Returns the Url where the import can get the data from.
+   * Returns the configuration specific to the chosen plugin.
    *
-   * @return Url
+   * @return array
    */
-  public function getUrl();
+  public function getPluginConfiguration();
 
   /**
    * Returns the Importer plugin ID to be used by this importer.

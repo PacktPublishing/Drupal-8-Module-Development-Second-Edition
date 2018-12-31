@@ -6,6 +6,7 @@ use Drupal\Component\Plugin\Exception\PluginException;
 use Drupal\Component\Plugin\PluginBase;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\products\Entity\ImporterInterface;
 use Drupal\products\Plugin\ImporterInterface as ImporterPluginInterface;
 use GuzzleHttp\Client;
@@ -15,6 +16,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  * Base class for Importer plugins.
  */
 abstract class ImporterBase extends PluginBase implements ImporterPluginInterface, ContainerFactoryPluginInterface {
+
+  use StringTranslationTrait;
 
   /**
    * @var \Drupal\Core\Entity\EntityTypeManager

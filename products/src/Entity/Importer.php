@@ -54,13 +54,6 @@ class Importer extends ConfigEntityBase implements ImporterInterface {
   protected $label;
 
   /**
-   * The URL from where the import file can be retrieved.
-   *
-   * @var string
-   */
-  protected $url;
-
-  /**
    * The plugin ID of the plugin to be used for processing this import.
    *
    * @var string
@@ -89,11 +82,11 @@ class Importer extends ConfigEntityBase implements ImporterInterface {
   protected $bundle;
 
   /**
-   * {@inheritdoc}
+   * The configuration specific to the plugin.
+   *
+   * @var array
    */
-  public function getUrl() {
-    return $this->url ? Url::fromUri($this->url) : NULL;
-  }
+  protected $plugin_configuration;
 
   /**
    * {@inheritdoc}
@@ -121,6 +114,13 @@ class Importer extends ConfigEntityBase implements ImporterInterface {
    */
   public function getBundle() {
     return $this->bundle;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPluginConfiguration() {
+    return $this->plugin_configuration;
   }
 
 }

@@ -17,6 +17,23 @@ class JsonImporter extends ImporterBase {
   /**
    * {@inheritdoc}
    */
+  public function getConfigurationForm(\Drupal\products\Entity\ImporterInterface $importer) {
+    $form = [];
+    $config = $importer->getPluginConfiguration();
+    $form['url'] = [
+      '#type' => 'url',
+      '#default_value' => isset($config['url']) ? $config['url'] : '',
+      '#title' => $this->t('Url'),
+      '#description' => $this->t('The URL to the import resource'),
+      '#required' => TRUE,
+    ];
+    return $form;
+  }
+
+
+  /**
+   * {@inheritdoc}
+   */
   public function import() {
     $data = $this->getData();
     if (!$data) {
@@ -40,9 +57,15 @@ class JsonImporter extends ImporterBase {
    * @return \stdClass
    */
   private function getData() {
-    /** @var \Drupal\products\Entity\ImporterInterface $config */
-    $config = $this->configuration['config'];
-    $request = $this->httpClient->get($config->getUrl()->toString());
+    /** @var \Drupal\products\Entity\ImporterInterface $importer_config */
+    $importer_config = $this->configuration['config'];
+    $config = $importer_config->getPluginConfiguration();
+    $url = isset($config['url']) ? $config['url'] : NULL;
+    if (!$url) {
+      return NULL;
+    }
+
+    $request = $this->httpClient->get($url);
     $string = $request->getBody()->getContents();
     return json_decode($string);
   }

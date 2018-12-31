@@ -10,9 +10,6 @@ products.importer.*:
       label: 'Label'
     uuid:
       type: string
-    url:
-      type: uri
-      label: Uri
     plugin:
       type: string
       label: Plugin ID
@@ -25,6 +22,8 @@ products.importer.*:
     bundle:
       type: string
       label: The product bundle
+    plugin_configuration:
+      type: products.importer.plugin.[%parent.plugin]
 
 products.product_type.*:
   type: config_entity
@@ -38,3 +37,15 @@ products.product_type.*:
       label: 'Label'
     uuid:
       type: string
+
+products.importer.plugin.*:
+  type: mapping
+  label: 'Plugin configuration'
+
+products.importer.plugin.json:
+  type: mapping
+  label: Plugin configuration for the Json importer plugin
+  mapping:
+    url:
+      type: uri
+      label: Uri
