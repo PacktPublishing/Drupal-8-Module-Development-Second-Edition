@@ -60,4 +60,3 @@ products.importer.plugin.csv:
       sequence:
         type: integer
         label: CSV File ID
-
