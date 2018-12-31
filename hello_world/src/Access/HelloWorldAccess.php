@@ -34,7 +34,11 @@ class HelloWorldAccess implements AccessInterface {
    * @return AccessResult
    */
   public function access(AccountInterface $account) {
-    $salutation = $this->configFactory->get('hello_world.custom_salutation')->get('salutation');
-    return in_array('editor', $account->getRoles()) && $salutation != "" ? AccessResult::forbidden() : AccessResult::allowed();
+    $config = $this->configFactory->get('hello_world.custom_salutation');
+    $salutation = $config->get('salutation');
+    $access = in_array('editor', $account->getRoles()) && $salutation != "" ? AccessResult::forbidden() : AccessResult::allowed();
+    $access->addCacheableDependency($config);
+    $access->addCacheableDependency($account);
+    return $access;
   }
 }
