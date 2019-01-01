@@ -2,6 +2,7 @@
 
 namespace Drupal\products\Commands;
 
+use Drupal\Core\Lock\LockBackendInterface;
 use Drupal\products\Plugin\ImporterManager;
 use Drush\Commands\DrushCommands;
 use Symfony\Component\Console\Input\InputOption;
@@ -17,12 +18,19 @@ class ProductCommands extends DrushCommands {
   protected $importerManager;
 
   /**
+   * @var \Drupal\Core\Lock\LockBackendInterface
+   */
+  protected $lock;
+
+  /**
    * ProductCommands constructor.
    *
    * @param \Drupal\products\Plugin\ImporterManager $importerManager
+   * @param \Drupal\Core\Lock\LockBackendInterface $lock
    */
-  public function __construct(ImporterManager $importerManager) {
+  public function __construct(ImporterManager $importerManager, LockBackendInterface $lock) {
     $this->importerManager = $importerManager;
+    $this->lock = $lock;
   }
 
   /**
@@ -68,10 +76,19 @@ class ProductCommands extends DrushCommands {
    * @param \Drupal\products\Plugin\ImporterInterface $plugin
    */
   protected function runPluginImport(\Drupal\products\Plugin\ImporterInterface $plugin) {
+    if (!$this->lock->acquire($plugin->getPluginId())) {
+      $this->logger()->log('notice', t('The plugin @plugin is already running. Waiting for it to finish.', ['@plugin' => $plugin->getPluginDefinition()['label']]));
+      if ($this->lock->wait($plugin->getPluginId())) {
+        $this->logger()->log('notice', t('The wait is killing me. Giving up.'));
+        return;
+      }
+    }
+
     $result = $plugin->import();
     $message_values = ['@importer' => $plugin->getConfig()->label()];
     if ($result) {
       $this->logger()->log('status', t('The "@importer" importer has been run.', $message_values));
+      $this->lock->release($plugin->getPluginId());
       return;
     }
 
