@@ -3,6 +3,7 @@
 namespace Drupal\products\Plugin\Importer;
 
 use Drupal\Core\Batch\BatchBuilder;
+use Drupal\products\Entity\ProductInterface;
 use Drupal\products\Plugin\ImporterBase;
 
 /**
@@ -203,6 +204,7 @@ class JsonImporter extends ImporterBase {
       $product = $this->entityTypeManager->getStorage('product')->create($values);
       $product->setName($data->name);
       $product->setProductNumber($data->number);
+      $this->handleProductImage($data, $product);
       $product->save();
       return;
     }
@@ -215,6 +217,32 @@ class JsonImporter extends ImporterBase {
     $product = reset($existing);
     $product->setName($data->name);
     $product->setProductNumber($data->number);
+    $this->handleProductImage($data, $product);
     $product->save();
   }
+
+  /**
+   * Imports the image of the product and adds it to the Product entity.
+   *
+   * @param $data
+   * @param \Drupal\products\Entity\ProductInterface $product
+   */
+  private function handleProductImage($data, ProductInterface $product) {
+    $name = $data->image;
+    $image = file_get_contents('products://' . $name);
+    if (!$image) {
+      // Perhaps log something.
+      return;
+    }
+
+    /** @var \Drupal\file\FileInterface $file */
+    $file = file_save_data($image, 'public://product_images/' . $name, FILE_EXISTS_REPLACE);
+    if (!$file) {
+      // Something went wrong, perhaps log it.
+      return;
+    }
+
+    $product->setImage($file->id());
+  }
+
 }
