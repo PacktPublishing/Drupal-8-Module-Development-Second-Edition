@@ -4,7 +4,7 @@ hello_world.hello:
     _controller: Drupal\hello_world\Controller\HelloWorldController::helloWorld
     _title: 'Our first route'
   requirements:
-    _permission: 'access content'
+    _hello_world_access_check: 'TRUE'
 
 hello_world.greeting_form:
   path: '/admin/config/salutation-configuration'
@@ -12,4 +12,4 @@ hello_world.greeting_form:
     _form: '\Drupal\hello_world\Form\SalutationConfigurationForm'
     _title: 'Salutation configuration'
   requirements:
-    _hello_world_access_check: 'TRUE'
+    _permission: 'administer site configuration'
