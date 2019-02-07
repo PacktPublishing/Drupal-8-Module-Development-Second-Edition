@@ -58,7 +58,7 @@ class HelloWorldSalutation {
 
     $time = new \DateTime();
 
-    if ((int) $time->format('G') >= 06 && (int) $time->format('G') < 12) {
+    if ((int) $time->format('G') >= 00 && (int) $time->format('G') < 12) {
       return $this->t('Good morning world');
     }
 
