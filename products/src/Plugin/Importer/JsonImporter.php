@@ -3,6 +3,7 @@
 namespace Drupal\products\Plugin\Importer;
 
 use Drupal\Core\Batch\BatchBuilder;
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\products\Entity\ProductInterface;
 use Drupal\products\Plugin\ImporterBase;
 
@@ -236,7 +237,7 @@ class JsonImporter extends ImporterBase {
     }
 
     /** @var \Drupal\file\FileInterface $file */
-    $file = file_save_data($image, 'public://product_images/' . $name, FILE_EXISTS_REPLACE);
+    $file = file_save_data($image, 'public://product_images/' . $name, FileSystemInterface::EXISTS_REPLACE);
     if (!$file) {
       // Something went wrong, perhaps log it.
       return;
