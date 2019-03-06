@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\products\FunctionalJavascript;
 
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\file\Entity\File;
 use Drupal\FunctionalJavascriptTests\WebDriverTestBase;
 use Drupal\products\Entity\Importer;
@@ -44,7 +45,7 @@ class ImporterFormTest extends WebDriverTestBase {
     $this->container->get('module_installer')->install(['products', 'csv_importer_test']);
     $csv_path = drupal_get_path('module', 'csv_importer_test') . '/products.csv';
     $csv_contents = file_get_contents($csv_path);
-    $this->file = file_save_data($csv_contents, 'public://simpletest-products.csv', FILE_EXISTS_REPLACE);
+    $this->file = file_save_data($csv_contents, 'public://simpletest-products.csv', FileSystemInterface::EXISTS_REPLACE);
     $this->admin = $this->drupalCreateUser(['administer site configuration']);
     $this->bundle = ProductType::create(['id' => 'goods', 'label' => 'Goods']);
     $this->bundle->save();

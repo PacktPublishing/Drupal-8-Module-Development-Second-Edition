@@ -2,6 +2,7 @@
 
 namespace Drupal\Tests\products\Kernel;
 
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\KernelTests\KernelTestBase;
 
 /**
@@ -31,7 +32,7 @@ class CsvImporterTest extends KernelTestBase {
 
     $csv_path = drupal_get_path('module', 'csv_importer_test') . '/products.csv';
     $csv_contents = file_get_contents($csv_path);
-    $file = file_save_data($csv_contents, 'public://simpletest-products.csv', FILE_EXISTS_REPLACE);
+    $file = file_save_data($csv_contents, 'public://simpletest-products.csv', FileSystemInterface::EXISTS_REPLACE);
     $config = $manager->getStorage('importer')->create([
       'id' => 'csv',
       'label' => 'CSV',
