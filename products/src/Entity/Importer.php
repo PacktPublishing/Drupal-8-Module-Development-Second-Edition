@@ -34,6 +34,15 @@ use Drupal\Core\Url;
  *     "edit-form" = "/admin/structure/importer/{importer}/edit",
  *     "delete-form" = "/admin/structure/importer/{importer}/delete",
  *     "collection" = "/admin/structure/importer"
+ *   },
+ *   config_export = {
+ *     "id",
+ *     "label",
+ *     "url",
+ *     "plugin",
+ *     "update_existing",
+ *     "source",
+ *     "bundle"
  *   }
  * )
  */
