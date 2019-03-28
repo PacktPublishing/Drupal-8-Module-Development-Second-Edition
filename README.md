@@ -11,12 +11,12 @@ This is the code repository for [Drupal 8 Module Development - Second Edition](h
 Drupal 8 comes with a release cycle that allows for new functionality to be added at a much faster pace. However, this also means code deprecations and changing architecture that you need to stay on top of. This book updates the first edition and includes the new functionality introduced in versions up to, and including 8.7.
 
 This book covers the following exciting features:
-Develop Drupal 8 modules that do all the things you want 
-Master numerous Drupal 8 sub-systems and APIs in the process 
-Model, store, manipulate and process data to serve your purposes 
-Display data and content in a clean and secure way using the Drupal 8 theme system 
-Test your business logic to prevent regressions 
-Stay ahead of the curve and write code following the current best practices 
+* Develop Drupal 8 modules that do all the things you want 
+* Master numerous Drupal 8 sub-systems and APIs in the process 
+* Model, store, manipulate and process data to serve your purposes 
+* Display data and content in a clean and secure way using the Drupal 8 theme system 
+* Test your business logic to prevent regressions 
+* Stay ahead of the curve and write code following the current best practices 
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1789612365) today!
 
@@ -54,9 +54,6 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 * Drupal 8 Development Cookbook - Second Edition  [[Packt]](https://prod.packtpub.com/in//web-development/drupal-8-development-cookbook-second-edition?utm_source=github&utm_medium=repository&utm_campaign=) [[Amazon]](https://www.amazon.com/dp/1788290402)
 
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
-
-*  [[Packt]]() [[Amazon]](https://www.amazon.com/dp/)
 
 ## Get to Know the Author
 **Daniel Sipos**
