@@ -60,7 +60,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 is a senior web developer specializing in Drupal. He's been working with Drupal sites since version 6, and started out, like many others, as a site builder. He's a self-taught programmer with many years' experience working professionally on complex Drupal 7 and 8 projects. In his spare time, he runs webomelette, a Drupal website where he writes technical articles, tips, and techniques related to Drupal development.
 
 
-## Other books by the author
+## Another book by the author
 [Drupal 8 Module Development](https://www.packtpub.com/web-development/drupal-8-module-development?utm_source=github&utm_medium=repository&utm_campaign=9781782168775 )
 
 
