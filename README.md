@@ -3,7 +3,7 @@
 
 <a href="https://www.packtpub.com/web-development/drupal-8-module-development-second-edition-0?utm_source=github&utm_medium=repository&utm_campaign=9781789612363"><img src="https://dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/89612363_new.png" alt="Drupal 8 Module Development - Second Edition" height="256px" align="right"></a>
 
-This is the code repository for [Drupal 8 Module Development - Second Edition](https://www.packtpub.com/web-development/drupal-8-module-development-second-edition-0?utm_source=github&utm_medium=repository&utm_campaign=9781789612363 ), published by Packt.
+This is the code repository for [Drupal 8 Module Development - Second Edition](https://www.packtpub.com/web-development/drupal-8-module-development-second-edition-0?utm_source=github&utm_medium=repository&utm_campaign=9781789612363), published by Packt.
 
 **Build modules and themes using the latest version of Drupal 8**
 
